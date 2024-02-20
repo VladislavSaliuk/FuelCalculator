@@ -3,15 +3,35 @@ body {
 }
 
 
-div.heading {
+.heading {
     text-align: center;
     margin-top: 30px;
     font-family: "Times New Roman";
     font-size: 20px;
 }
 
-div.formula {
+.formula {
     font-style: italic;
     text-align: center;
     margin-top: 60px;
+}
+
+.input-data { 
+    display: grid;
+    grid-template-areas: "element element element element element element element";
+}
+
+.element {
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    border-radius: 5%;
+}
+
+.without-index {
+    line-height: 30px;
+}
+
+.with-index {
+    line-height: 20px;
 }
