@@ -6,7 +6,12 @@ body {
 div.heading {
     text-align: center;
     margin-top: 30px;
-    font-family: "Calibri";
-    font-size: 25px;
+    font-family: "Times New Roman";
+    font-size: 20px;
 }
 
+div.formula {
+    font-style: italic;
+    text-align: center;
+    margin-top: 60px;
+}
