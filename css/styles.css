@@ -15,33 +15,46 @@ body {
 
 .formula {
     font-style: italic;
+    font-size: 20px;
     text-align: center;
     margin-top: 60px;
 }
 
 .input-data { 
     display: grid;
-    grid-template-areas: "element element element element element element element";
+    grid-template-columns: repeat(7, 1fr);
     position: relative;
     margin: 0 auto;
-    margin-top: 70px;
+    margin-top: 65px;
     width: 80%;
+    justify-items: center; 
+    align-items: center; 
 }
-
 
 .element {
     width: 100px;
-    height: 30px;
+    height: 20px;
     background-color: white;
-    border-radius: 5%;
+    border-radius: 20%;
     padding-left: 5px;
 }
 
-
-.without-index {
-    line-height: 30px;
+.button {
+    width: 150px;
+    height: 50px;
+    position: absolute; /* Змінено на абсолютне позиціонування */
+    top: 50%; /* Переміщуємо кнопку на 50% від верхнього краю батьківського елемента */
+    left: 50%; /* Переміщуємо кнопку на 50% від лівого краю батьківського елемента */
+    transform: translate(-50%, -50%); /* Вирівнюємо кнопку в центр батьківського елемента */
+    background: #333;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
 }
 
-.with-index {
-    line-height: 20px;
-}
+.button:hover {
+    filter: brightness(120%)
+} 
