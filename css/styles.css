@@ -42,10 +42,10 @@ body {
 .button {
     width: 150px;
     height: 50px;
-    position: absolute; /* Змінено на абсолютне позиціонування */
-    top: 50%; /* Переміщуємо кнопку на 50% від верхнього краю батьківського елемента */
-    left: 50%; /* Переміщуємо кнопку на 50% від лівого краю батьківського елемента */
-    transform: translate(-50%, -50%); /* Вирівнюємо кнопку в центр батьківського елемента */
+    position: absolute; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
     background: #333;
     color: white;
     text-align: center;
