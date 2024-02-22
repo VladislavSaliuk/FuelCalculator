@@ -44,7 +44,7 @@ body {
     width: 160px;
     padding: 5px;
     border-radius: 5px;
-    background: #30b0cd;
+    background: #007bff;
     color: white;
     line-height: 50px;
     cursor: pointer;
@@ -52,7 +52,7 @@ body {
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
     transition-duration: 0.3s;
     transition-property: box-shadow, transform;
-    margin: 70px auto 0;
+    margin: 30px auto 0;
 }
 
 .button:hover, .button:focus, .button:active {
@@ -61,10 +61,40 @@ body {
 }
 
 
-.element {
+.input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-wrapper input {
     width: 100px;
-    height: 20px;
-    background-color: white;
+    height: 10px;
+    padding: 10px;
+    border: 2px solid #ccc;
     border-radius: 5px;
-    padding-left: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.input-wrapper input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.input-wrapper label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #999;
+    font-size: 20px;
+    transition: top 0.3s ease, left 0.3s ease, font-size 0.3s ease;
+    pointer-events: none;
+}
+
+.input-wrapper input:focus + label,
+.input-wrapper input:not(:placeholder-shown) + label {
+    top: -15px;
+    left: 5px;
+    font-size: 12px;
+    color: #007bff;
 }
