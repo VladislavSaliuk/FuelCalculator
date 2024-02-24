@@ -1,6 +1,6 @@
 function getFuelComponentValues() {
     let fuelComponentsValues = {};
-    let inputIds = ["fuelComponentC", "fuelComponentH", "fuelComponentS", "fuelComponentO", "fuelComponentN", "fuelComponentA", "fuelComponentW"];
+    let inputIds = ["fuelComponentCarbon", "fuelComponentHydrogen", "fuelComponentSulfur", "fuelComponentOxygen", "fuelComponentNitrogen", "fuelComponentAsh", "fuelComponentWolfram"];
     
     inputIds.forEach(function(id) {
         fuelComponentsValues[id] = parseFloat(document.getElementById(id).value);
@@ -10,13 +10,13 @@ function getFuelComponentValues() {
 }
 
 function calculateCoeficientKPC() {
-    let fuelComponentWValue = getFuelComponentValues()["fuelComponentW"];
-    return (100 / (100 - fuelComponentWValue));
+    let fuelComponentWolframValue = getFuelComponentValues()["fuelComponentWolfram"];
+    return (100 / (100 - fuelComponentWolframValue));
 }
 
 function calculateCoeficientKPG() {
     let fuelComponentsValues = getFuelComponentValues();
-    return (100 / (100 - fuelComponentsValues["fuelComponentW"] - fuelComponentsValues["fuelComponentA"]));
+    return (100 / (100 - fuelComponentsValues["fuelComponentWolfram"] - fuelComponentsValues["fuelComponentAsh"]));
 }
 
 function calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(coeficient){
@@ -32,28 +32,28 @@ function calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(coeficient){
 }
 
 function calculateLowerHeatOfCombutisionForTheWorkingMassOfFuel(){
-    return ((339 * getFuelComponentValues()["fuelComponentC"] + 1030 * getFuelComponentValues()["fuelComponentH"] - 108.8 * (getFuelComponentValues()["fuelComponentO"] - getFuelComponentValues()["fuelComponentS"]) - 25 * getFuelComponentValues()["fuelComponentW"]) / 1000); 
+    return ((339 * getFuelComponentValues()["fuelComponentCarbon"] + 1030 * getFuelComponentValues()["fuelComponentHydrogen"] - 108.8 * (getFuelComponentValues()["fuelComponentOxygen"] - getFuelComponentValues()["fuelComponentSulfur"]) - 25 * getFuelComponentValues()["fuelComponentWolfram"]) / 1000); 
 }
 
 function calculateLowerHeatOfCombutisionForTheDryMassOfFuel() {
-    return ((calculateLowerHeatOfCombutisionForTheWorkingMassOfFuel() + (0.025 * getFuelComponentValues()["fuelComponentW"])) * (100 / (100 - getFuelComponentValues()["fuelComponentW"])));
+    return ((calculateLowerHeatOfCombutisionForTheWorkingMassOfFuel() + (0.025 * getFuelComponentValues()["fuelComponentWolfram"])) * (100 / (100 - getFuelComponentValues()["fuelComponentWolfram"])));
 }
 
 function calculateLowerHeatOfCombutisionForTheСombustibleMassOfFuel() {
-    return ((calculateLowerHeatOfCombutisionForTheWorkingMassOfFuel() + (0.025 * getFuelComponentValues()["fuelComponentW"])) * (100 / (100 - getFuelComponentValues()["fuelComponentW"] - getFuelComponentValues()["fuelComponentA"])));
+    return ((calculateLowerHeatOfCombutisionForTheWorkingMassOfFuel() + (0.025 * getFuelComponentValues()["fuelComponentWolfram"])) * (100 / (100 - getFuelComponentValues()["fuelComponentWolfram"] - getFuelComponentValues()["fuelComponentAsh"])));
 }
 
 function getConstantFuelComponentValues(){
 
     const constantFuelComponentsValues = {
-        fuelComponentC: 85.5,
-        fuelComponentH: 11.2,
-        fuelComponentS: 2.5,
-        fuelComponentO: 0.8,
-        fuelComponentV: 333.3,
-        fuelComponentW: 2,
-        fuelComponentA: 0.15,
-        fuelComponentQ: 40.4
+        fuelComponentCarbon: 85.5,
+        fuelComponentHydrogen: 11.2,
+        fuelComponentSulfur: 2.5,
+        fuelComponentOxygen: 0.8,
+        fuelComponentVanadium: 333.3,
+        fuelComponentWolfram: 2,
+        fuelComponentAsh: 0.15,
+        fuelComponentQuantityOfWarm: 40.4
     };
 
     return constantFuelComponentsValues;
@@ -63,32 +63,48 @@ function calculateTheCompositionOfTheFuelOilWorkingMass(){
     let fuelComponentsValues = getConstantFuelComponentValues();
     
     let calculationResults = {
-        fuelComponentC: (fuelComponentsValues['fuelComponentC'] * ((100 - fuelComponentsValues['fuelComponentW'] - fuelComponentsValues['fuelComponentA']) / 100)),
-        fuelComponentH: (fuelComponentsValues['fuelComponentH'] * ((100 - fuelComponentsValues['fuelComponentW'] - fuelComponentsValues['fuelComponentA']) / 100)),
-        fuelComponentS: (fuelComponentsValues['fuelComponentS'] * ((100 - fuelComponentsValues['fuelComponentW'] - fuelComponentsValues['fuelComponentA']) / 100)),
-        fuelComponentO: (fuelComponentsValues['fuelComponentO'] * ((100 - fuelComponentsValues['fuelComponentW'] - (fuelComponentsValues['fuelComponentA'] / 10)) / 100)),
-        fuelComponentV: (fuelComponentsValues['fuelComponentV'] * ((100 - fuelComponentsValues['fuelComponentW']) / 100)),
-        fuelComponentA: (fuelComponentsValues['fuelComponentA'] * ((100 - fuelComponentsValues['fuelComponentW']) / 100)),
+        fuelComponentCarbon: (fuelComponentsValues['fuelComponentCarbon'] * ((100 - fuelComponentsValues['fuelComponentWolfram'] - fuelComponentsValues['fuelComponentAsh']) / 100)),
+        fuelComponentHydrogen: (fuelComponentsValues['fuelComponentHydrogen'] * ((100 - fuelComponentsValues['fuelComponentWolfram'] - fuelComponentsValues['fuelComponentAsh']) / 100)),
+        fuelComponentSulfur: (fuelComponentsValues['fuelComponentSulfur'] * ((100 - fuelComponentsValues['fuelComponentWolfram'] - fuelComponentsValues['fuelComponentAsh']) / 100)),
+        fuelComponentOxygen: (fuelComponentsValues['fuelComponentOxygen'] * ((100 - fuelComponentsValues['fuelComponentWolfram'] - (fuelComponentsValues['fuelComponentAsh'] / 10)) / 100)),
+        fuelComponentVanadium: (fuelComponentsValues['fuelComponentVanadium'] * ((100 - fuelComponentsValues['fuelComponentWolfram']) / 100)),
+        fuelComponentAsh: (fuelComponentsValues['fuelComponentAsh'] * ((100 - fuelComponentsValues['fuelComponentWolfram']) / 100)),
     };
 
     return calculationResults;
 }
 
 function calculateLowerHeatOfCombustionOfFuelOil(){
-    return ((getConstantFuelComponentValues()["fuelComponentQ"] * ((100 - getConstantFuelComponentValues()["fuelComponentW"] - getConstantFuelComponentValues()["fuelComponentA"]) / 100)) - (0.025 * getConstantFuelComponentValues()["fuelComponentW"]));
+    return ((getConstantFuelComponentValues()["fuelComponentQuantityOfWarm"] * ((100 - getConstantFuelComponentValues()["fuelComponentWolfram"] - getConstantFuelComponentValues()["fuelComponentAsh"]) / 100)) - (0.025 * getConstantFuelComponentValues()["fuelComponentWolfram"]));
 }
 
-function print(){
-    console.log(calculateCoeficientKPC());
-    console.log(calculateCoeficientKPG());
-    console.log(calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC()));
-    console.log(calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG()));
-    console.log(calculateLowerHeatOfCombutisionForTheWorkingMassOfFuel());
-    console.log(calculateLowerHeatOfCombutisionForTheDryMassOfFuel());
-    console.log(calculateLowerHeatOfCombutisionForTheСombustibleMassOfFuel());
-    console.log(calculateTheCompositionOfTheFuelOilWorkingMass());
-    console.log(calculateLowerHeatOfCombustionOfFuelOil())
+function setCalculationResults(){
+    document.querySelector('.coefficientOfTransitionFromWorkingToDryMassResult').textContent = calculateCoeficientKPC().toFixed(2) + "%";
+    document.querySelector('.coefficientOfTransitionFromWorkingToCombustibleMassResult').textContent = calculateCoeficientKPG().toFixed(2) + "%";
+    document.querySelector('.dryCarbonComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentCarbon'].toFixed(2) + "%";
+    document.querySelector('.dryHydrogenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentHydrogen'].toFixed(2) + "%";
+    document.querySelector('.drySulfurComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentSulfur'].toFixed(2) + "%";
+    document.querySelector('.dryNitrogenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentNitrogen'].toFixed(2) + "%";
+    document.querySelector('.dryOxygenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentOxygen'].toFixed(2) + "%";
+    document.querySelector('.dryAshComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentAsh'].toFixed(2) + "%";
+    document.querySelector('.combustibleCarbonComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentCarbon'].toFixed(2) + "%";
+    document.querySelector('.combustibleHydrogenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentHydrogen'].toFixed(2) + "%";
+    document.querySelector('.combustibleSulfurComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentSulfur'].toFixed(2) + "%";
+    document.querySelector('.combustibleNitrogenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentNitrogen'].toFixed(2) + "%";
+    document.querySelector('.combustibleOxygenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentOxygen'].toFixed(2) + "%";
+    document.querySelector('.combustibleAshComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentAsh'].toFixed(2) + "%";
+    document.querySelector('.lowerHeatOfCombutisionForTheWorkingMassOfFuel').textContent = calculateLowerHeatOfCombutisionForTheWorkingMassOfFuel().toFixed(2) + " MJ";
+    document.querySelector('.lowerHeatOfCombutisionForTheDryMassOfFuel').textContent = calculateLowerHeatOfCombutisionForTheDryMassOfFuel().toFixed(2) + " MJ";
+    document.querySelector('.lowerHeatOfCombutisionForTheCombustibleMassOfFuel').textContent = calculateLowerHeatOfCombutisionForTheСombustibleMassOfFuel().toFixed(2) + " MJ";
+    document.querySelector('.workingCarbonComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentCarbon'].toFixed(2) + "%";
+    document.querySelector('.workingHydrogenComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentHydrogen'].toFixed(2) + "%";
+    document.querySelector('.workingSulfurComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentSulfur'].toFixed(2) + "%";
+    document.querySelector('.workingVanadiumComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentVanadium'].toFixed(2) + "%";
+    document.querySelector('.workingOxygenComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentOxygen'].toFixed(2) + "%";
+    document.querySelector('.workingAshComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentAsh'].toFixed(2) + "%";
+    document.querySelector('.lowerHeatOfCombustionOfFuelOil').textContent = calculateLowerHeatOfCombustionOfFuelOil().toFixed(2) + " MJ";
 }
+
 
 let button = document.getElementById("calculateButton");
-button.addEventListener("click", print);
+button.addEventListener("click", setCalculationResults);

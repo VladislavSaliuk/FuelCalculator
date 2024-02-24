@@ -28,7 +28,7 @@ body {
     grid-template-columns: repeat(7, 1fr); 
     position: relative; 
     margin: 0 auto;
-    margin-top: 70px;
+    margin-top: 30px;
     width: 80%;
     justify-items: center; 
     align-items: center;
@@ -97,6 +97,31 @@ body {
     left: 5px;
     font-size: 12px;
     color: #007bff;
+}
+
+.calculation-results {
+    width: 80%;
+    height: 1130px;
+    border: 1.5px solid #999;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.calculation-results-heading {
+    text-align: left;
+    font-family: "Bahnschrift Light", sans-serif;
+    color: #007bff;
+    font-size: 28px;
+    margin-left: 10px;
+}
+
+.results {
+    text-align: left;
+    margin-left: 10px;
+    font-family: "Bahnschrift Light", sans-serif;
 }
 
 @media screen and (max-width: 768px) {

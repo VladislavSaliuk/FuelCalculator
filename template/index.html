@@ -14,38 +14,72 @@
    </div>
    <div class = "input-data">
      <div class="input-wrapper">
-          <input id = "fuelComponentC" type="text" required>
-          <label>С<sup>R</sup></label>
+          <input id = "fuelComponentCarbon" type="text" required>
+          <label>С<sup>W</sup></label>
       </div>
       <div class="input-wrapper">
-          <input id = "fuelComponentH" type="text" required>
-          <label>H<sup>R</sup></label>
+          <input id = "fuelComponentHydrogen" type="text" required>
+          <label>H<sup>W</sup></label>
       </div>
       <div class="input-wrapper">
-          <input id = "fuelComponentS" type="text" required>
-          <label>S<sup>R</sup></label>
+          <input id = "fuelComponentSulfur" type="text" required>
+          <label>S<sup>W</sup></label>
       </div>
       <div class="input-wrapper">
-          <input id = "fuelComponentO" type="text" required>
-          <label>O<sup>R</sup></label>
+          <input id = "fuelComponentOxygen" type="text" required>
+          <label>O<sup>W</sup></label>
       </div>
       <div class="input-wrapper">
-          <input id = "fuelComponentN" type="text" required>
-          <label>N<sup>R</sup></label>
+          <input id = "fuelComponentNitrogen" type="text" required>
+          <label>N<sup>W</sup></label>
       </div>
       <div class="input-wrapper">
-          <input id = "fuelComponentA" type="text" required>
-          <label>A<sup>P</sup></label>
+          <input id = "fuelComponentAsh" type="text" required>
+          <label>A<sup>W</sup></label>
       </div>
       <div class="input-wrapper">
-          <input id = "fuelComponentW" type="text" required>
-          <label>W<sup>P</sup></label>
+          <input id = "fuelComponentWolfram" type="text" required>
+          <label>W<sup>W</sup></label>
       </div>                                         
      </div>
      <div id = "calculateButton" class = "button">
           Calculate 
      </div>
-</div>
+     <div class = "calculation-results">
+        <div class = "calculation-results-heading">
+            <p>Calculation resuts:</p>
+        </div>
+        <div class = "results">
+            <p>The coefficient of transition from working to dry mass is: <span class="coefficientOfTransitionFromWorkingToDryMassResult">0%</span></p>
+            <p>The coefficient of transition from working to combustible mass is: <span class="coefficientOfTransitionFromWorkingToCombustibleMassResult">0%</span></p>
+            <p>The composition of the dry weight of the fuel will be:</p>
+            <p>С<sup>D</sup>: <span class="dryCarbonComponent">0%</span></p>
+            <p>H<sup>D</sup>: <span class="dryHydrogenComponent">0%</span></p>  
+            <p>S<sup>D</sup>: <span class="drySulfurComponent">0%</span></p>
+            <p>N<sup>D</sup>: <span class="dryNitrogenComponent">0%</span></p>
+            <p>O<sup>D</sup>: <span class="dryOxygenComponent">0%</span></p>
+            <p>A<sup>D</sup>: <span class="dryAshComponent">0%</span></p>
+            <p>The composition of the combustible fuel mass will be:</p>
+            <p>С<sup>C</sup>: <span class="combustibleCarbonComponent">0%</span></p>
+            <p>H<sup>C</sup>: <span class="combustibleHydrogenComponent">0%</span></p>  
+            <p>S<sup>C</sup>: <span class="combustibleSulfurComponent">0%</span></p>
+            <p>N<sup>C</sup>: <span class="combustibleNitrogenComponent">0%</span></p>
+            <p>O<sup>C</sup>: <span class="combustibleOxygenComponent">0%</span></p>
+            <p>A<sup>C</sup>: <span class="combustibleAshComponent">0%</span></p>
+            <p>The lower heat of combustion for the working mass according to the given composition of the fuel components is: <span class="lowerHeatOfCombutisionForTheWorkingMassOfFuel">0 MJ</span></p>
+            <p>The lower heat of combustion for the dry mass according to the given composition of the fuel components is: <span class="lowerHeatOfCombutisionForTheDryMassOfFuel">0 MJ</span></p>
+            <p>The lower heat of combustion for the combustible mass according to the given composition of the fuel components is: <span class="lowerHeatOfCombutisionForTheCombustibleMassOfFuel">0 MJ</span></p>
+            <p>The composition of the working mass of fuel oil is:</p>
+            <p>С<sup>W</sup>: <span class="workingCarbonComponent">0%</span></p>
+            <p>H<sup>W</sup>: <span class="workingHydrogenComponent">0%</span></p>  
+            <p>S<sup>W</sup>: <span class="workingSulfurComponent">0%</span></p>
+            <p>V<sup>W</sup>: <span class="workingVanadiumComponent">0%</span></p>
+            <p>O<sup>W</sup>: <span class="workingOxygenComponent">0%</span></p>
+            <p>A<sup>W</sup>: <span class="workingAshComponent">0%</span></p>
+            <p>The lower heat of combustion of fuel oil per working mass for the working mass according to the given composition of fuel components is: <span class="lowerHeatOfCombustionOfFuelOil">0 MJ</span></p>
+        </div>
+     </div>   
+</div>    
 <script src="D:\FuelCalculator\js\script.js"></script>
 </body>
 </html>
