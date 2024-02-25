@@ -79,30 +79,54 @@ function calculateLowerHeatOfCombustionOfFuelOil(){
 }
 
 function setCalculationResults(){
-    document.querySelector('.coefficientOfTransitionFromWorkingToDryMassResult').textContent = calculateCoeficientKPC().toFixed(2) + "%";
-    document.querySelector('.coefficientOfTransitionFromWorkingToCombustibleMassResult').textContent = calculateCoeficientKPG().toFixed(2) + "%";
-    document.querySelector('.dryCarbonComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentCarbon'].toFixed(2) + "%";
-    document.querySelector('.dryHydrogenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentHydrogen'].toFixed(2) + "%";
-    document.querySelector('.drySulfurComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentSulfur'].toFixed(2) + "%";
-    document.querySelector('.dryNitrogenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentNitrogen'].toFixed(2) + "%";
-    document.querySelector('.dryOxygenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentOxygen'].toFixed(2) + "%";
-    document.querySelector('.dryAshComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentAsh'].toFixed(2) + "%";
-    document.querySelector('.combustibleCarbonComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentCarbon'].toFixed(2) + "%";
-    document.querySelector('.combustibleHydrogenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentHydrogen'].toFixed(2) + "%";
-    document.querySelector('.combustibleSulfurComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentSulfur'].toFixed(2) + "%";
-    document.querySelector('.combustibleNitrogenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentNitrogen'].toFixed(2) + "%";
-    document.querySelector('.combustibleOxygenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentOxygen'].toFixed(2) + "%";
-    document.querySelector('.combustibleAshComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentAsh'].toFixed(2) + "%";
-    document.querySelector('.lowerHeatOfCombutisionForTheWorkingMassOfFuel').textContent = calculateLowerHeatOfCombutisionForTheWorkingMassOfFuel().toFixed(2) + " MJ";
-    document.querySelector('.lowerHeatOfCombutisionForTheDryMassOfFuel').textContent = calculateLowerHeatOfCombutisionForTheDryMassOfFuel().toFixed(2) + " MJ";
-    document.querySelector('.lowerHeatOfCombutisionForTheCombustibleMassOfFuel').textContent = calculateLowerHeatOfCombutisionForTheСombustibleMassOfFuel().toFixed(2) + " MJ";
-    document.querySelector('.workingCarbonComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentCarbon'].toFixed(2) + "%";
-    document.querySelector('.workingHydrogenComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentHydrogen'].toFixed(2) + "%";
-    document.querySelector('.workingSulfurComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentSulfur'].toFixed(2) + "%";
-    document.querySelector('.workingVanadiumComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentVanadium'].toFixed(2) + "%";
-    document.querySelector('.workingOxygenComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentOxygen'].toFixed(2) + "%";
-    document.querySelector('.workingAshComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentAsh'].toFixed(2) + "%";
-    document.querySelector('.lowerHeatOfCombustionOfFuelOil').textContent = calculateLowerHeatOfCombustionOfFuelOil().toFixed(2) + " MJ";
+    
+    let fuelComponentCarbonValue = document.getElementById("fuelComponentCarbon").value.trim();
+    let fuelComponentHydrogenValue = document.getElementById("fuelComponentHydrogen").value.trim();
+    let fuelComponentSulfurValue = document.getElementById("fuelComponentSulfur").value.trim();
+    let fuelComponentOxygenValue = document.getElementById("fuelComponentOxygen").value.trim();
+    let fuelComponentNitrogenValue = document.getElementById("fuelComponentNitrogen").value.trim();
+    let fuelComponentAshValue = document.getElementById("fuelComponentAsh").value.trim();
+    let fuelComponentWolframValue = document.getElementById("fuelComponentWolfram").value.trim();
+
+    if (
+        fuelComponentCarbonValue === "" ||
+        fuelComponentHydrogenValue === "" ||
+        fuelComponentSulfurValue === "" ||
+        fuelComponentOxygenValue === "" ||
+        fuelComponentNitrogenValue === "" ||
+        fuelComponentAshValue === "" ||
+        fuelComponentWolframValue === ""
+    ) {
+        alert("Please, fill in all fields before calculation!");
+        return; 
+    }
+    else
+    {
+        document.querySelector('.coefficientOfTransitionFromWorkingToDryMassResult').textContent = calculateCoeficientKPC().toFixed(2) + "%";
+        document.querySelector('.coefficientOfTransitionFromWorkingToCombustibleMassResult').textContent = calculateCoeficientKPG().toFixed(2) + "%";
+        document.querySelector('.dryCarbonComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentCarbon'].toFixed(2) + "%";
+        document.querySelector('.dryHydrogenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentHydrogen'].toFixed(2) + "%";
+        document.querySelector('.drySulfurComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentSulfur'].toFixed(2) + "%";
+        document.querySelector('.dryNitrogenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentNitrogen'].toFixed(2) + "%";
+        document.querySelector('.dryOxygenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentOxygen'].toFixed(2) + "%";
+        document.querySelector('.dryAshComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPC())['fuelComponentAsh'].toFixed(2) + "%";
+        document.querySelector('.combustibleCarbonComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentCarbon'].toFixed(2) + "%";
+        document.querySelector('.combustibleHydrogenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentHydrogen'].toFixed(2) + "%";
+        document.querySelector('.combustibleSulfurComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentSulfur'].toFixed(2) + "%";
+        document.querySelector('.combustibleNitrogenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentNitrogen'].toFixed(2) + "%";
+        document.querySelector('.combustibleOxygenComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentOxygen'].toFixed(2) + "%";
+        document.querySelector('.combustibleAshComponent').textContent = calculateTheCompositionOfWeightOfTheFuelUsingCoeficient(calculateCoeficientKPG())['fuelComponentAsh'].toFixed(2) + "%";         
+        document.querySelector('.lowerHeatOfCombutisionForTheWorkingMassOfFuel').textContent = calculateLowerHeatOfCombutisionForTheWorkingMassOfFuel().toFixed(2) + " MJ";
+        document.querySelector('.lowerHeatOfCombutisionForTheDryMassOfFuel').textContent = calculateLowerHeatOfCombutisionForTheDryMassOfFuel().toFixed(2) + " MJ";            
+        document.querySelector('.lowerHeatOfCombutisionForTheCombustibleMassOfFuel').textContent = calculateLowerHeatOfCombutisionForTheСombustibleMassOfFuel().toFixed(2) + " MJ";
+        document.querySelector('.workingCarbonComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentCarbon'].toFixed(2) + "%";
+        document.querySelector('.workingHydrogenComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentHydrogen'].toFixed(2) + "%";
+        document.querySelector('.workingSulfurComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentSulfur'].toFixed(2) + "%";           
+        document.querySelector('.workingVanadiumComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentVanadium'].toFixed(2) + "%";
+        document.querySelector('.workingOxygenComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentOxygen'].toFixed(2) + "%";
+        document.querySelector('.workingAshComponent').textContent = calculateTheCompositionOfTheFuelOilWorkingMass()['fuelComponentAsh'].toFixed(2) + "%";
+        document.querySelector('.lowerHeatOfCombustionOfFuelOil').textContent = calculateLowerHeatOfCombustionOfFuelOil().toFixed(2) + " MJ";
+    }
 }
 
 
